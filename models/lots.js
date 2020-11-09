@@ -35,6 +35,8 @@ const lots = new schema({
   log: [Object],
   author: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   participants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
+}, {
+  timestamps: true
 })
 
 module.exports = mongoose.model('Lot', lots)

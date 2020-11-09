@@ -14,6 +14,8 @@ const users = new schema({
   },
   lots: [{ type: schema.Types.ObjectId, ref: 'Lot' }],
   ownedLots: [{ type: schema.Types.ObjectId, ref: 'Lot' }]
+}, {
+  timestamps: true
 })
 
 module.exports = mongoose.model('User', users)
