@@ -4,12 +4,21 @@ const router = express.Router()
 const User = require('../models/users')
 
 router.get('/', async (req, res) => {
-  const usersList = await User.find().exec()
+  const usersList = await User
+    .find()
+    .populate('lots')
+    .exec()
   res.json(usersList)
 })
 
 router.get('/:id', async (req, res) => {
-  const user = await User.findById(req.params.id).exec()
+  const user = await User
+    .findById(req.params.id)
+    .populate({
+      path: 'lots',
+      select: 'title startPrice'
+    })
+    .exec()
   res.json(user)
 })
 

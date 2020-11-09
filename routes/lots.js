@@ -11,8 +11,10 @@ router.get('/:id', (req, res) => {
   res.send('One')
 })
 
-router.post('/', (req, res) => {
-  res.send('Create')
+router.post('/', async (req, res) => {
+  const newLot = new Lot(req.body)
+  const lot = await newLot.save()
+  res.json(lot)
 })
 
 router.put('/:id', (req, res) => {

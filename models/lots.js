@@ -33,8 +33,8 @@ const lots = new schema({
   },
   images: [Object],
   log: [Object],
-  author: mongoose.Schema.Types.ObjectId,
-  participants: [mongoose.Schema.Types.ObjectId]
+  author: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  participants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
 })
 
-module.exports = mongoose.model('lots', lots)
+module.exports = mongoose.model('Lot', lots)
